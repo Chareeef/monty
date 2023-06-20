@@ -1,17 +1,15 @@
 #include "monty.h"
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
 
-int main(int argc, char **argv)
+int main(int argc __attribute__((unused)), char **argv)
 {
-	stack_t *stack_t;
+	stack_t **stack = NULL;
 	void (*func)(stack_t **stack, unsigned int line_number);
 	int i;
 	instruction_t instructions[] = {
 		{"pint", pint},
-		{"push", push},
-		{"pop", pop},
+		{"pall", pall},
+		{"nop", nop},
+//		{"pop", pop},
 		{NULL, NULL}
 	};
 
@@ -23,6 +21,7 @@ int main(int argc, char **argv)
 
 	if (func)
 		func(stack, atoi(argv[1]));
+		
 
 	return (0);
 }
