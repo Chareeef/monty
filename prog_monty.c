@@ -9,8 +9,8 @@ int main(int argc __attribute__((unused)), char **argv)
 		{"pint", pint},
 		{"pall", pall},
 		{"nop", nop},
-//		{"swap", swap},
-//		{"pop", pop},
+		{"swap", swap},
+		{"pop", pop},
 		{NULL, NULL}
 	};
 
