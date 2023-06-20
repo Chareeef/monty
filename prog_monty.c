@@ -40,10 +40,12 @@ int main(int argc __attribute__((unused)), char **argv)
 				func = instructions[i].f;
 				break;
 			}
+			else
+				func = NULL;
 		}
 		if (func)
 			func(&stack, line_n);
-		if (!func)
+		else
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_n, opcode);
 		line_n++;
 	}
