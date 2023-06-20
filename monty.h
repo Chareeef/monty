@@ -5,6 +5,17 @@
 #include <stdio.h>
 #include <string.h>
 
+#define INSTRUCTIONS {			\
+                {"pint", pint},		\
+                {"pall", pall},		\
+                {"nop", nop},		\
+                {"swap", swap},		\
+                {"pop", pop},		\
+                {"add", add},		\
+                {"push", push},		\
+                {NULL, NULL}		\
+        };
+
 extern unsigned int line_n;
 extern char *arg_2;
 

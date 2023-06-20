@@ -1,5 +1,12 @@
 #include "monty.h"
 
+/**
+ * main - entry point
+ * @argc: unused
+ * @argv: arguments
+ * Return: 0
+ */
+
 int main(int argc __attribute__((unused)), char **argv)
 {
 	FILE *file = NULL;
@@ -7,24 +14,14 @@ int main(int argc __attribute__((unused)), char **argv)
 	void (*func)(stack_t **stack, unsigned int line_number) = NULL;
 	int i;
 	char line[100], *opcode;
-	instruction_t instructions[] = {
-		{"pint", pint},
-		{"pall", pall},
-		{"nop", nop},
-		{"swap", swap},
-		{"pop", pop},
-		{"add", add},
-		{"push", push},
-		{NULL, NULL}
-	};
 
+	instruction_t instructions[] = INSTRUCTIONS;
 	file = fopen(argv[1], "r");
 	if (!file)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-
 	line_n = 1;
 	while (fgets(line, sizeof(line), file))
 	{
@@ -43,14 +40,11 @@ int main(int argc __attribute__((unused)), char **argv)
 				break;
 			}
 		}
-
 		if (func)
 			func(&stack, line_n);
 		else
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_n, argv[1]);
 		line_n++;
 	}
-		
-
 	return (0);
 }
