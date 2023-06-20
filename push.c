@@ -1,6 +1,5 @@
 #include "monty.h"
 
-unsigned int line_n;
 char *arg_2;
 /**
  * push - pushes an element the top of the stack

@@ -16,7 +16,6 @@
 	{NULL, NULL}	\
 }
 
-extern unsigned int line_n;
 extern char *arg_2;
 
 /**

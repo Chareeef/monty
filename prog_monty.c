@@ -12,7 +12,7 @@ int main(int argc __attribute__((unused)), char **argv)
 	FILE *file = NULL;
 	stack_t *stack = NULL;
 	void (*func)(stack_t **stack, unsigned int line_number) = NULL;
-	int i;
+	int i, line_n;
 	char line[100], *opcode;
 
 	instruction_t instructions[] = INSTRUCTIONS;
@@ -43,8 +43,8 @@ int main(int argc __attribute__((unused)), char **argv)
 		}
 		if (func)
 			func(&stack, line_n);
-		else
-			fprintf(stderr, "L%d: unknown instruction %s\n", line_n, argv[1]);
+		if (!func)
+			fprintf(stderr, "L%d: unknown instruction %s\n", line_n, opcode);
 		line_n++;
 	}
 	return (0);
