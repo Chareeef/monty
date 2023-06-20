@@ -2,7 +2,7 @@
 
 int main(int argc __attribute__((unused)), char **argv)
 {
-	stack_t **stack = NULL;
+	stack_t *stack = NULL;
 	void (*func)(stack_t **stack, unsigned int line_number) = NULL;
 	int i;
 	instruction_t instructions[] = {
@@ -26,10 +26,8 @@ int main(int argc __attribute__((unused)), char **argv)
 		}
 	}
 
-	printf("%s\n", instructions[i].opcode);
 	if (func)
-		func(stack, line_n);
-	printf("2\n");
+		func(&stack, line_n);
 	line_n++;
 		
 

@@ -14,7 +14,6 @@ void	push(stack_t **stack, unsigned int line_number)
 	stack_t *new =  NULL;
 	int n;
 
-	printf("push\n");
 	new = malloc(sizeof(stack_t));
 	if (!new)
 	{
@@ -32,7 +31,8 @@ void	push(stack_t **stack, unsigned int line_number)
 	new->n = atoi(args[2]);
 	new->prev = NULL;
 	new->next = head;
-	head->prev = new;
+	if (head)
+		head->prev = new;
 	*stack = new;
 	
 }
