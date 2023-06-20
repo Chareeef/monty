@@ -1,1 +1,1 @@
-# monty8
+# Our monty project
