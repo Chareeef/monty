@@ -16,6 +16,7 @@ int main(int argc __attribute__((unused)), char **argv)
 	char line[100], *opcode;
 
 	instruction_t instructions[] = INSTRUCTIONS;
+
 	file = fopen(argv[1], "r");
 	if (!file)
 	{
