@@ -2,37 +2,36 @@
 
 /**
  * main - entry point
- * @argc: unused
- * @argv: arguments
- * Return: 0
+ * @argc: arguments count
+ * @argv: arguments vector
+ *
+ * Return: 0 on Success
  */
 
-int main(int argc __attribute__((unused)), char **argv)
+int main(int argc, char **argv)
 {
 	FILE *file = NULL;
 	stack_t *stack = NULL;
 	void (*func)(stack_t **stack, unsigned int line_number) = NULL;
-	int i, line_n;
+	int i, line_n = 1;
 	char line[100], *opcode;
-
 	instruction_t instructions[] = INSTRUCTIONS;
 
+	if (argc != 2)
+	{
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
 	file = fopen(argv[1], "r");
 	if (!file)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	line_n = 1;
-	while (fgets(line, sizeof(line), file))
+	for (; fgets(line, sizeof(line), file); line_n++, func = NULL)
 	{
-		for (i = 0; line[i]; i++)
-		{
-			if (line[i] == '\n')
-				line[i] = '\0';
-		}
-		opcode = strtok(line, " ");
-		arg_2 = strtok(NULL, " ");
+		opcode = strtok(line, " \n");
+		arg_2 = strtok(NULL, " \n");
 		for (i = 0; instructions[i].opcode; i++)
 		{
 			if (strcmp(opcode, instructions[i].opcode) == 0)
@@ -40,14 +39,14 @@ int main(int argc __attribute__((unused)), char **argv)
 				func = instructions[i].f;
 				break;
 			}
-			else
-				func = NULL;
 		}
 		if (func)
 			func(&stack, line_n);
 		else
+		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_n, opcode);
-		line_n++;
+			exit(EXIT_FAILURE);
+		}
 	}
 	return (0);
 }
