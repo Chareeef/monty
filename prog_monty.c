@@ -11,6 +11,7 @@ int main(int argc __attribute__((unused)), char **argv)
 		{"nop", nop},
 		{"swap", swap},
 		{"pop", pop},
+		{"push", push},
 		{NULL, NULL}
 	};
 
