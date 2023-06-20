@@ -6,7 +6,7 @@
 #include <string.h>
 
 extern unsigned int line_n;
-extern char **args;
+extern char *arg_2;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)

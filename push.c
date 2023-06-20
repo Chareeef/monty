@@ -1,7 +1,7 @@
 #include "monty.h"
 
 unsigned int line_n;
-char **args;
+char *arg_2;
 /**
  * push - pushes an element the top of the stack
  * @stack: stack head
@@ -21,14 +21,19 @@ void	push(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	n = atoi(args[2]);
-	if (n == 0 && args[2][0] != '0')
+	if (!arg_2)
+	{
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	n = atoi(arg_2);
+	if (n == 0 && arg_2[0] != '0')
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	new->n = atoi(args[2]);
+	new->n = atoi(arg_2);
 	new->prev = NULL;
 	new->next = head;
 	if (head)
