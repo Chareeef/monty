@@ -3,7 +3,7 @@
 int main(int argc __attribute__((unused)), char **argv)
 {
 	stack_t **stack = NULL;
-	void (*func)(stack_t **stack, unsigned int line_number);
+	void (*func)(stack_t **stack, unsigned int line_number) = NULL;
 	int i;
 	instruction_t instructions[] = {
 		{"pint", pint},
@@ -15,14 +15,22 @@ int main(int argc __attribute__((unused)), char **argv)
 		{NULL, NULL}
 	};
 
+	args = argv;
+	line_n = 1;
 	for (i = 0; instructions[i].opcode; i++)
 	{
-		if (strcmp(argv[1], instructions[i].opcode) == 0)
+		if (strcmp(args[1], instructions[i].opcode) == 0)
+		{
 			func = instructions[i].f;
+			break;
+		}
 	}
 
+	printf("%s\n", instructions[i].opcode);
 	if (func)
-		func(stack, atoi(argv[2]));
+		func(stack, line_n);
+	printf("2\n");
+	line_n++;
 		
 
 	return (0);
