@@ -1,4 +1,5 @@
 #include "monty.h"
+#include <ctype.h>
 
 char *arg_2;
 /**
@@ -11,7 +12,7 @@ void	push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *head = *stack;
 	stack_t *new =  NULL;
-	int n;
+	int n, i;
 
 	new = malloc(sizeof(stack_t));
 	if (!new)
@@ -25,14 +26,16 @@ void	push(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	n = atoi(arg_2);
-	if (n == 0 && arg_2[0] != '0')
+	for(i = 0; arg_2[i] != '\0'; i++)
 	{
-		fprintf(stderr, "L%u: usage: push integer\n", line_number);
-		exit(EXIT_FAILURE);
+		if (!isdigit(arg_2[i]))
+		{
+			fprintf(stderr, "L%u: usage: push integer\n", line_number);
+			exit(EXIT_FAILURE);
+		}
 	}
-
-	new->n = atoi(arg_2);
+	n = atoi(arg_2);
+	new->n = n;
 	new->prev = NULL;
 	new->next = head;
 	if (head)
