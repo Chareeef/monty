@@ -37,8 +37,14 @@ void	push(stack_t **stack, unsigned int line_number)
 	n = atoi(arg_2);
 	new->n = n;
 	new->prev = NULL;
-	new->next = head;
 	if (head)
+	{
 		head->prev = new;
+		new->next = head;
+	}
+	else
+	{
+		new->next = NULL;
+	}
 	*stack = new;
 }
