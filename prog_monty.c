@@ -18,16 +18,10 @@ int main(int argc, char **argv)
 	instruction_t instructions[] = INSTRUCTIONS;
 
 	if (argc != 2)
-	{
-		fprintf(stderr, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
-	}
+		print_error(1, NULL, NULL, 0);
 	file = fopen(argv[1], "r");
 	if (!file)
-	{
-		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
-		exit(EXIT_FAILURE);
-	}
+		print_error(2, argv[1], NULL, 0);
 	for (; fgets(line, sizeof(line), file); line_n++, func = NULL)
 	{
 		opcode = strtok(line, " \n");
@@ -45,10 +39,33 @@ int main(int argc, char **argv)
 		if (func)
 			func(&stack, line_n);
 		else
-		{
-			fprintf(stderr, "L%d: unknown instruction %s\n", line_n, opcode);
-		exit(EXIT_FAILURE);
-		}
+			print_error(3, NULL, opcode, line_n);
 	}
 	return (0);
+}
+
+/**
+ * print_error - print an error message and exit
+ * @code: error code
+ * @argv_1: argv[1]
+ * @opcode: opcode string
+ * @line_n: line number
+ */
+
+void print_error(int code, char *argv_1, char *opcode, int line_n)
+{
+	switch (code)
+	{
+		case 1:
+			fprintf(stderr, "USAGE: monty file\n");
+			break;
+		case 2:
+			fprintf(stderr, "Error: Can't open file %s\n", argv_1);
+			break;
+		case 3:
+			fprintf(stderr, "L%d: unknown instruction %s\n", line_n, opcode);
+			break;
+	}
+
+	exit(EXIT_FAILURE);
 }

@@ -5,10 +5,10 @@ push 2
   push    3 pp 
    pop
 nop
-
    pall    mk k 
 add
 swap
 
    pall    mk k 
+ push n
 
