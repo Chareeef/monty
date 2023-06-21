@@ -1,6 +1,32 @@
 #include "monty.h"
 
 /**
+ * print_error - print an error message and exit
+ * @code: error code
+ * @argv_0: argv[1]
+ * @opcode: opcode string
+ * @line_n: line number
+ */
+
+void print_error(int code, char *argv_0, char *opcode, int line_n)
+{
+	switch (code)
+	{
+		case 0:
+			fprintf(stderr, "USAGE: monty file\n");
+			break;
+		case 1:
+			fprintf(stderr, "Error: Can't open file %s\n", argv_0);
+			break;
+		case 2:
+			fprintf(stderr, "L%d: unknown instruction %s\n", line_n, opcode);
+			break;
+	}
+
+	exit(EXIT_FAILURE);
+}
+
+/**
  * main - entry point
  * @argc: arguments count
  * @argv: arguments vector
@@ -18,7 +44,7 @@ int main(int argc, char **argv)
 	instruction_t instructions[] = INSTRUCTIONS;
 
 	if (argc != 2)
-		print_error(1, NULL, NULL, 0);
+		print_error(0, NULL, NULL, 0);
 	file = fopen(argv[1], "r");
 	if (!file)
 		print_error(2, argv[1], NULL, 0);
@@ -44,28 +70,3 @@ int main(int argc, char **argv)
 	return (0);
 }
 
-/**
- * print_error - print an error message and exit
- * @code: error code
- * @argv_1: argv[1]
- * @opcode: opcode string
- * @line_n: line number
- */
-
-void print_error(int code, char *argv_1, char *opcode, int line_n)
-{
-	switch (code)
-	{
-		case 1:
-			fprintf(stderr, "Usage: monty file\n");
-			break;
-		case 2:
-			fprintf(stderr, "Error: Can't open file %s\n", argv_1);
-			break;
-		case 3:
-			fprintf(stderr, "L%d: unknown instruction %s\n", line_n, opcode);
-			break;
-	}
-
-	exit(EXIT_FAILURE);
-}
