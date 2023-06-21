@@ -51,7 +51,7 @@ int main(int argc, char **argv)
 	for (; fgets(line, sizeof(line), file); line_n++, func = NULL)
 	{
 		opcode = strtok(line, " \n");
-		if (!opcode)
+		if (!opcode || opcode[0] == '#')
 			continue;
 		arg_2 = strtok(NULL, " \n");
 		for (i = 0; instructions[i].opcode; i++)
