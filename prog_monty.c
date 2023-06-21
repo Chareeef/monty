@@ -47,7 +47,7 @@ int main(int argc, char **argv)
 		print_error(0, NULL, NULL, 0);
 	file = fopen(argv[1], "r");
 	if (!file)
-		print_error(2, argv[1], NULL, 0);
+		print_error(1, argv[1], NULL, 0);
 	for (; fgets(line, sizeof(line), file); line_n++, func = NULL)
 	{
 		opcode = strtok(line, " \n");
