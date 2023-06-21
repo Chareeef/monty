@@ -1,6 +1,28 @@
 #include "monty.h"
 
 /**
+ * free_stack - free a stack
+ * @stack: pointer to pointer to the stack
+ */
+void free_stack(stack_t **stack)
+{
+	stack_t *head;
+	stack_t *temp;
+
+	if (!stack)
+		exit(EXIT_FAILURE);
+
+	head = *stack;
+
+	while (head)
+	{
+		temp = head;
+		head = head->next;
+		free(temp);
+	}
+}
+
+/**
  * print_error - print an error message and exit
  * @code: error code
  * @argv_0: argv[1]
@@ -68,5 +90,7 @@ int main(int argc, char **argv)
 		else
 			print_error(2, NULL, opcode, line_n);
 	}
+	free_stack(&stack);
+	fclose(file);
 	return (0);
 }
