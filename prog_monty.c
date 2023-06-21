@@ -65,7 +65,7 @@ int main(int argc, char **argv)
 		if (func)
 			func(&stack, line_n);
 		else
-			print_error(3, NULL, opcode, line_n);
+			print_error(2, NULL, opcode, line_n);
 	}
 	return (0);
 }
