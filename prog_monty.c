@@ -40,7 +40,7 @@ int main(int argc, char **argv)
 	stack_t *stack = NULL;
 	void (*func)(stack_t **stack, unsigned int line_number) = NULL;
 	int i, line_n = 1;
-	char line[100], *opcode;
+	char line[500], *opcode = NULL;
 	instruction_t instructions[] = INSTRUCTIONS;
 
 	if (argc != 2)
@@ -48,7 +48,8 @@ int main(int argc, char **argv)
 	file = fopen(argv[1], "r");
 	if (!file)
 		print_error(1, argv[1], NULL, 0);
-	for (; fgets(line, sizeof(line), file); line_n++, func = NULL)
+	for (; fgets(line, sizeof(line), file);
+			line_n++, func = NULL, opcode = NULL)
 	{
 		opcode = strtok(line, " \n");
 		if (!opcode || opcode[0] == '#')
@@ -69,4 +70,3 @@ int main(int argc, char **argv)
 	}
 	return (0);
 }
-
