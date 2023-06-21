@@ -31,6 +31,8 @@ int main(int argc, char **argv)
 	for (; fgets(line, sizeof(line), file); line_n++, func = NULL)
 	{
 		opcode = strtok(line, " \n");
+		if (!opcode)
+			continue;
 		arg_2 = strtok(NULL, " \n");
 		for (i = 0; instructions[i].opcode; i++)
 		{
