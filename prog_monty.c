@@ -44,8 +44,11 @@ int main(int argc, char **argv)
 		}
 		if (func)
 			func(&stack, line_n);
-		fprintf(stderr, "L%d: unknown instruction %s\n", line_n, opcode);
+		else
+		{
+			fprintf(stderr, "L%d: unknown instruction %s\n", line_n, opcode);
 		exit(EXIT_FAILURE);
+		}
 	}
 	return (0);
 }
