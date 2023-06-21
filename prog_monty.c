@@ -57,7 +57,7 @@ void print_error(int code, char *argv_1, char *opcode, int line_n)
 	switch (code)
 	{
 		case 1:
-			fprintf(stderr, "USAGE: monty file\n");
+			fprintf(stderr, "Usage: monty file\n");
 			break;
 		case 2:
 			fprintf(stderr, "Error: Can't open file %s\n", argv_1);
