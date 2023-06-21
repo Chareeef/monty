@@ -12,7 +12,7 @@ void	push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *head = *stack;
 	stack_t *new =  NULL;
-	int n, i;
+	int n, i = 0;
 
 	new = malloc(sizeof(stack_t));
 	if (!new)
@@ -26,7 +26,9 @@ void	push(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	for (i = 0; arg_2[i] != '\0'; i++)
+	if (arg_2[0] != '-' || arg_2[0] != '+')
+		i++;
+	for (; arg_2[i] != '\0'; i++)
 	{
 		if (!isdigit(arg_2[i]))
 		{
