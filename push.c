@@ -26,7 +26,7 @@ void	push(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	for(i = 0; arg_2[i] != '\0'; i++)
+	for (i = 0; arg_2[i] != '\0'; i++)
 	{
 		if (!isdigit(arg_2[i]))
 		{
