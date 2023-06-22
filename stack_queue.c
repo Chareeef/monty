@@ -8,7 +8,8 @@
  * @line_number: line number
  */
 
-void	stack_switch(stack_t **stack __attribute__((unused)), unsigned int line_number __attribute__((unused)))
+void	stack_switch(stack_t **stack __attribute__((unused)),
+		unsigned int line_number __attribute__((unused)))
 {
 	params[1] = "stack";
 }
@@ -19,7 +20,8 @@ void	stack_switch(stack_t **stack __attribute__((unused)), unsigned int line_num
  * @line_number: line number
  */
 
-void	queue_switch(stack_t **stack __attribute__((unused)), unsigned int line_number __attribute__((unused)))
+void	queue_switch(stack_t **stack __attribute__((unused)),
+		unsigned int line_number __attribute__((unused)))
 {
 	params[1] = "queue";
 }
