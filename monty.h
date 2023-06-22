@@ -22,10 +22,12 @@
 	{"pstr", pstr},	\
 	{"rotl", rotl},	\
 	{"rotr", rotr},	\
+	{"stack", stack_switch},	\
+	{"queue", queue_switch},	\
 	{NULL, NULL}	\
 }
 
-extern char *arg_2;
+extern char *params[2];
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -74,5 +76,7 @@ void    pchar(stack_t **stack, unsigned int line_number);
 void    pstr(stack_t **stack, unsigned int line_number);
 void    rotl(stack_t **stack, unsigned int line_number);
 void    rotr(stack_t **stack, unsigned int line_number);
+void    stack_switch(stack_t **stack, unsigned int line_number);
+void    queue_switch(stack_t **stack, unsigned int line_number);
 
 #endif

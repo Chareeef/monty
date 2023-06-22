@@ -65,6 +65,7 @@ int main(int argc, char **argv)
 	char line[500], *opcode = NULL;
 	instruction_t instructions[] = INSTRUCTIONS;
 
+	params[1] = "stack";
 	if (argc != 2)
 		print_error(0, NULL, NULL, 0);
 	file = fopen(argv[1], "r");
@@ -76,7 +77,7 @@ int main(int argc, char **argv)
 		opcode = strtok(line, " \n");
 		if (!opcode || opcode[0] == '#')
 			continue;
-		arg_2 = strtok(NULL, " \n");
+		params[0] = strtok(NULL, " \n");
 		for (i = 0; instructions[i].opcode; i++)
 		{
 			if (strcmp(opcode, instructions[i].opcode) == 0)
