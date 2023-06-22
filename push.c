@@ -42,9 +42,8 @@ void	push(stack_t **stack, unsigned int line_number)
 	new->next = head;
 	if (head)
 		head->prev = new;
+	*stack = new;
 
-	if (strcmp(params[1], "stack") == 0)
-		*stack = new;
-	else
+	if (strcmp(params[1], "queue") == 0)
 		rotl(stack, line_number);
 }
