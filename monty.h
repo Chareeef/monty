@@ -20,6 +20,8 @@
 	{"mod", modul},	\
 	{"pchar", pchar},	\
 	{"pstr", pstr},	\
+	{"rotl", rotl},	\
+	{"rotr", rotr},	\
 	{NULL, NULL}	\
 }
 
@@ -70,5 +72,7 @@ void    divide(stack_t **stack, unsigned int line_number);
 void    modul(stack_t **stack, unsigned int line_number);
 void    pchar(stack_t **stack, unsigned int line_number);
 void    pstr(stack_t **stack, unsigned int line_number);
+void    rotl(stack_t **stack, unsigned int line_number);
+void    rotr(stack_t **stack, unsigned int line_number);
 
 #endif
