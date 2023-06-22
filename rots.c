@@ -6,7 +6,7 @@
  * @line_number: line number
  */
 
-void	rotl(stack_t **stack, unsigned int line_number)
+void	rotl(stack_t **stack, unsigned int line_number __attribute__((unused)))
 {
 	stack_t	*current;
 	stack_t	*top;
@@ -31,7 +31,7 @@ void	rotl(stack_t **stack, unsigned int line_number)
  * @line_number: line number
  */
 
-void	rotr(stack_t **stack, unsigned int line_number)
+void	rotr(stack_t **stack, unsigned int line_number __attribute__((unused)))
 {
 	stack_t	*bottom;
 	stack_t	*current;
