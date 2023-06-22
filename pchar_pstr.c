@@ -37,11 +37,8 @@ void	pstr(stack_t **stack, unsigned int line_number __attribute__((unused)))
 {
 	stack_t	*top;
 
-	if (!(*stack))
-	{
-		printf("\n");
+	if (!stack)
 		return;
-	}
 
 	top = *stack;
 
@@ -50,7 +47,9 @@ void	pstr(stack_t **stack, unsigned int line_number __attribute__((unused)))
 		if (!top->n || !isascii(top->n))
 			break;
 
-		printf("%c\n", top->n);
+		printf("%c", top->n);
 		top = top->next;
 	}
+
+	printf("\n");
 }
