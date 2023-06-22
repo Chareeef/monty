@@ -44,8 +44,8 @@ void	rotr(stack_t **stack, unsigned int line_number __attribute__((unused)))
 		bottom = current;
 		current = current->prev;
 		current->next = NULL;
-		(*stack)->prev = bottom;
 		bottom->next = *stack;
 		bottom->prev = NULL;
+		*stack = bottom;
 	}
 }
